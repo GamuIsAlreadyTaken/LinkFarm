@@ -10,7 +10,7 @@ export type Post = {
 }
 
 export type Resource = {
-    tag: ResourceType
+    type: ResourceType
     description: string,
 }
 
