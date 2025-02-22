@@ -8,6 +8,13 @@
     UserProfile,
   } from "$lib/types.ts";
 
+  const restype: Record<ResourceType, string> = {
+    bug: "🪳",
+    docs: "📄",
+    experience: "🧪",
+    project: "🛠️",
+  };
+
   let { post, user }: { post: Post; user: UserProfile } = $props();
 
   let toggle = $state(false);
@@ -17,12 +24,14 @@
 </script>
 
 <div class="post-container">
-  <div class = "bottom-down">
+  <div class="bottom-down">
     <h2 class="tag">{post.tag.name}</h2>
-    <input type="checkbox" bind:checked={toggle} class="Giro" />
+    <div class="icon">
+      <input type="checkbox" bind:checked={toggle} />
+    </div>
   </div>
   {#if toggle}
-    <div class="post-container" >
+    <div class="post-container">
       <input
         type="text"
         placeholder="Enlace al recurso"
@@ -33,7 +42,7 @@
         type="text"
         placeholder="Descripcion del recurso"
         bind:value={description}
-        class="inpuut-spacing"
+        class="input-spacing"
       />
       <select bind:value={type} class="input-spacing">
         <option value="experience">experience</option>
@@ -52,36 +61,38 @@
   {/if}
   <div class="resources-container">
     {#each post.resources as des}
-      <a class="des" href={des.reference} target="_blank">{des.description}</a>
+      <a class="des" href={des.reference} target="_blank">
+        <span>{restype[des.type]}</span>{des.description}
+      </a>
     {/each}
   </div>
 </div>
 
 <style>
-  
-  .bottom-down{
-    height: 50px; /* Ajusta la altura al valor que necesites */
-  overflow: hidden; 
+  .bottom-down {
+    height: 50px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
   }
 
   input::placeholder {
-    color: white; /* Cambia este color según lo que necesites */
-    font-style: italic; /* Opcional: agrega estilo */
-    opacity: 1; /* Asegura que el color sea completamente visible */
+    color: white;
+    font-style: italic;
+    opacity: 1;
   }
 
   .input-spacing {
     background: #7864d3;
     color: white;
-  }
-
-  .inpuut-spacing {
     margin-bottom: 10px;
     background: #7864d3;
     color: white;
   }
 
   .post-container {
+    position: relative;
     background-color: #333333;
     border: 1px solid #e0e0e0;
     border-radius: 12px;
@@ -107,9 +118,11 @@
     flex-direction: column;
     gap: 10px;
   }
+  .resources-container a {
+    text-decoration: none;
+  }
 
   .des {
-    text-deration: none;
     color: white;
     font-size: 18px;
     padding: 10px;
@@ -124,20 +137,26 @@
     cursor: pointer;
   }
 
-  .Giro {
+  .icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+
+  .icon input {
     visibility: hidden;
   }
 
-  .Giro:checked::before {
+  .icon:has(input:checked)::before {
     rotate: 45deg;
   }
 
-  .Giro::before {
+  .icon:has(input)::before {
     content: "+";
     display: inline-block;
     border-radius: 50%;
     font-size: 1.5em;
-    width: 30px;
+    width: 40px;
     transition: rotate 300ms ease;
     aspect-ratio: 1/1;
     background-color: #784aec;

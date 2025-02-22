@@ -24,7 +24,9 @@
 </div>
 
 {#if !toggle}
-  <input type="checkbox" bind:checked={toggle} />
+  <div class="icon">
+    <input type="checkbox" bind:checked={toggle} />
+  </div>
 {:else}
   <TagSearcher
     bind:tag={string}
@@ -66,14 +68,17 @@
     margin-bottom: 1.5rem;
   }
 
-  input {
+  .icon {
     visibility: hidden;
   }
 
-  input::before {
+  .icon::before {
     content: "+";
     display: inline-block;
-    width: 30px;
+    border-radius: 50%;
+    font-size: 1.5em;
+    width: 40px;
+    transition: rotate 300ms ease;
     aspect-ratio: 1/1;
     background-color: #784aec;
     visibility: visible;

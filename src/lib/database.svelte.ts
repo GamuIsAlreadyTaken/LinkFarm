@@ -28,7 +28,7 @@ const tempdb = $state({
                     ]
                 },
                 {
-                    tag: tags[2],
+                    tag: tags[0],
                     resources: [
                         { type: "project", description: "(Insert Project description)" },
                         { type: "bug", description: "(Bug description + solution)" },
