@@ -1,7 +1,7 @@
 <script lang='ts'>
 	import type { Post } from '$lib/types.ts';
 
-    let post:Post = $props();
+    let {post}: {post: Post} = $props();
 </script>
 
 <style>
