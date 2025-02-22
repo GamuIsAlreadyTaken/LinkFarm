@@ -1,9 +1,10 @@
 <script lang="ts">
    // Función para devolver el valor al padre
-  export function getSearchValue() {
-    return searchQuery.trim();
-  }
+   let { value = $bindable() , onsubmit } = $props();
   
+</script>
+
+
   <style>
     .search-bar {
       display: flex;
@@ -35,9 +36,9 @@
     <input
       type="text"
       class="search-input"
-      bind:value={searchQuery}
+      bind:value={value}
       placeholder="Buscar..."
-      on:keydown={(e) => e.key === 'Enter' && getSearchValue()}
+      onkeydown={onsubmit}
     />
     <svg
       class="search-icon"
