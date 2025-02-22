@@ -100,9 +100,9 @@ export const listUserProfile: (filter: Filter<Post>) => UserProfile[] = //Lista 
         return tempdb.users.filter(u => u.posts.find(filter))
     }
 
-export const postUserProfile: (user: UserProfile) => void =
+export const postUserProfile: (user: Pick<UserProfile, "contactData" | "name">) => void =
     user => {
-        tempdb.users.push(user)
+        tempdb.users.push({ ...user, posts: [] })
     }
 
 const userEq: (a: UserProfile, b: UserProfile) => boolean =
@@ -127,9 +127,9 @@ export const listPost: (user: UserProfile) => Post[] =
         return tempdb.users.find(u => u.contactData == user.contactData)?.posts ?? []
     }
 
-export const postPost: (user: UserProfile, post: Post) => void =
+export const postPost: (user: UserProfile, post: Pick<Post, "tag">) => void =
     (user, post) => {
-        tempdb.users.find(u => user.contactData == u.contactData)?.posts.push(post)
+        tempdb.users.find(u => user.contactData == u.contactData)?.posts.push({ ...post, resources: [] })
     }
 // Resource { post }
 export const listResource: (user: UserProfile, tag: Tag) => Resource[] =
