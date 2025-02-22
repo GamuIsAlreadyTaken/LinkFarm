@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { filters, listTag } from '$lib/database';
+    import { filters, listTag } from '$lib/database.svelte';
   
     // Propiedades del componente
     let { tag = $bindable(), onsubmit } = $props();

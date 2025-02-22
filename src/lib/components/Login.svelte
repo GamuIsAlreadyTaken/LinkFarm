@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { getUserProfile } from "$lib/database";
+    import { getUserProfile } from "$lib/database.svelte";
 
     let { onlogin, user = $bindable() } = $props();
     let login = $state("");

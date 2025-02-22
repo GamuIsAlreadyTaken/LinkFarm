@@ -4,7 +4,7 @@ import type { UserProfile, Tag, Post, Resource } from "$lib/types"
 const TIMEOUT = 500
 
 export const db = Gun().get("tmtupqylqymdpptpedqseqflndbqsliaiqisatpaqiaetttmtmgpnspq2")
-const tempdb = {
+const tempdb = $state({
     users: [
         {
             name: "José Manuel Villar García",
@@ -80,7 +80,7 @@ const tempdb = {
         { type: "language", name: "C++" },
         { type: "language", name: "string.h" }
     ] as Tag[]
-}
+})
 
 type Filter<T> = (_: T) => boolean
 

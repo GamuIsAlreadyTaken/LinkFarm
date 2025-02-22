@@ -1,6 +1,6 @@
 <script lang="ts">
   import SearchBar from "$lib/components/TagSearcher.svelte";
-  import { listUserProfile, filters } from "$lib/database";
+  import { listUserProfile, filters } from "$lib/database.svelte";
   import type { Tag, UserProfile } from "$lib/types";
 
   let tag: Tag | undefined = $state();

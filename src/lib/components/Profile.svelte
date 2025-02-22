@@ -1,8 +1,14 @@
 <script lang="ts">
   import Post from "$lib/components/Post.svelte";
-  import type { UserProfile } from "$lib/types.ts";
+  import { postPost } from "$lib/database.svelte";
+  import type { Tag, UserProfile } from "$lib/types.ts";
+  import TagCreater from "./TagCreater.svelte";
+  import TagSearcher from "./TagSearcher.svelte";
 
   let { user }: { user: UserProfile } = $props();
+
+  let toggle = $state(false);
+  let string: Tag | undefined = $state();
 </script>
 
 <div class="profile">
@@ -17,10 +23,22 @@
   </div>
 </div>
 
+{#if !toggle}
+  <input type="checkbox" bind:checked={toggle} />
+{:else}
+  <TagSearcher
+    bind:tag={string}
+    onsubmit={() => {
+      toggle = !toggle;
+      postPost(user, { tag: string! });
+    }}
+  ></TagSearcher>
+{/if}
+
 <style>
   :global(body) {
     background-color: #121212; /* Fondo oscuro general */
-    color: #ffffff; /* Texto blanco por defecto */
+    color: #ffff; /*Texto lanco por defecto */
     font-family: "Arial", sans-serif;
   }
 
@@ -38,7 +56,7 @@
   .profile-name {
     font-size: 2rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #ffff;
     margin-bottom: 1rem;
   }
 
@@ -48,5 +66,21 @@
     margin-bottom: 1.5rem;
   }
 
-  
+  input {
+    visibility: hidden;
+  }
+
+  input::before {
+    content: "+";
+    display: inline-block;
+    width: 30px;
+    aspect-ratio: 1/1;
+    background-color: #784aec;
+    visibility: visible;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 </style>

@@ -1,11 +1,13 @@
 <script lang="ts">
+    import { postTag } from "$lib/database.svelte";
     import type { Post } from "$lib/types.ts";
   
     let { post }: { post: Post } = $props();
+
+    let toggle = $state(false)
   </script>
   
   <div class="post-container">
-    <h2 class="tag">{post.tag.name}</h2>
     <div class="resources-container">
       {#each post.resources as des}
         <a class="des" href="{des.reference}" target="_blank">{des.description}</a>
@@ -16,7 +18,7 @@
   
   <style>
     .post-container {
-      background-color: #ffffff;
+      background-color: #333333;
       border: 1px solid #e0e0e0;
       border-radius: 12px;
       padding: 20px;
@@ -29,7 +31,7 @@
       font-size: 24px;
       font-weight: bold;
       color: white;
-      background-color: #ff5733;
+      background-color: #333;
       padding: 10px 20px;
       border-radius: 8px;
       display: inline-block;
@@ -47,14 +49,14 @@
       color: #333;
       font-size: 18px;
       padding: 10px;
-      background: #f1c40f;
+      background: #7864d3;
       border-radius: 5px;
       transition: background 0.3s ease;
       margin: 0;
     }
   
     .des:hover {
-      background: #f39c12;
+      background: #784aec;
       cursor: pointer;
     }
   </style>
