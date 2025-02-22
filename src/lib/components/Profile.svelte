@@ -27,18 +27,13 @@
 </div>
 
 <style>
-  .profile {
-    padding: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    max-width: 400px;
-  }
+
 
   .profile {
     padding: 1rem;
     border: 1px solid #ddd;
     border-radius: 8px;
-    max-width: 400px;
+
     text-align: center;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
