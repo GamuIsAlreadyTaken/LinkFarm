@@ -1,8 +1,15 @@
-<script lang='ts'>
-	import type { Post } from '$lib/types.ts';
+<script lang="ts">
+    import type { Post } from "$lib/types.ts";
 
-    let {post}: {post: Post} = $props();
+    let { post }: { post: Post } = $props();
 </script>
+
+<h2 class="tag">{post.tag.name}</h2>
+<div>
+    {#each post.resources as des}
+        <p class="des">{@html des.description}</p>
+    {/each}
+</div>
 
 <style>
     .tag {
@@ -25,10 +32,3 @@
         transition: background 0.3s ease;
     }
 </style>
-
-<h2 class="tag">  {post.tag.name}  </h2>
-<div> 
-    {#each post.resources as des}
-        <p class="des">{@html des.description}</p>  
-    {/each}
-</div>

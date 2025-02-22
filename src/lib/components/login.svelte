@@ -1,21 +1,20 @@
-<script lang='ts'>
-    import { getUserProfile } from '$lib/database';
-	import type { UserProfile } from '$lib/types.ts';
+<script lang="ts">
+    import { getUserProfile } from "$lib/database";
 
-    let {user}: {user: UserProfile} = $props();
+    let { goSearcher, user = $bindable() } = $props();
     let login = $state("");
-    function checkuser(){
-        
-    if( getUserProfile(login) != undefined){
-        //Cambiar al buscador
-     }
+    function checkuser() {
+        user = getUserProfile(login);
+        console.log(user);
+        if (user != undefined) {
+            goSearcher();
+        }
     }
 </script>
 
 <input
-      type="text"
-      class="search-input"
-      bind:value={login}
-      placeholder="Buscar..."
-      onkeydown={checkuser}
-    />
+    class="search-input"
+    bind:value={login}
+    placeholder="Sumbit"
+    onchange={checkuser}
+/>
