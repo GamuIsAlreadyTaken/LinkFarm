@@ -3,6 +3,35 @@
 
     let { onlogin, user = $bindable() } = $props();
     let login = $state("");
+    let errorMessage = $state<string | null>(null); // Estado para el mensaje de error
+    let timeoutId: number | null = null; // Para manejar el temporizador
+
+    // Función para manejar el cambio en el input
+    const handleSearch = () => {
+        const foundUser = getUserProfile(login);
+        if (foundUser) {
+            user = foundUser;
+            onlogin();
+            clearErrorMessage(); // Limpiar mensaje de error si existe
+        } else {
+            showErrorMessage("Usuario no encontrado"); // Mostrar mensaje de error
+        }
+    };
+
+    // Función para mostrar el mensaje de error
+    const showErrorMessage = (message: string) => {
+        if (timeoutId) clearTimeout(timeoutId); // Limpiar temporizador anterior si existe
+        errorMessage = message;
+        timeoutId = setTimeout(() => {
+            errorMessage = null; // Ocultar el mensaje después de 3 segundos
+        }, 3000);
+    };
+
+    // Función para limpiar el mensaje de error
+    const clearErrorMessage = () => {
+        if (timeoutId) clearTimeout(timeoutId);
+        errorMessage = null;
+    };
 </script>
 
 <div class="login-container">
@@ -17,11 +46,13 @@
             class="search-input"
             bind:value={login}
             placeholder="Acount<mail>"
-            onchange={() => {
-                user = getUserProfile(login);
-                if (user) onlogin();
-            }}
+            onchange={handleSearch} 
         />
+        {#if errorMessage}
+            <div class="error-message">
+                {errorMessage}
+            </div>
+        {/if}
     </div>
 </div>
 
@@ -106,6 +137,25 @@
         box-shadow:
             0 8px 32px rgba(0, 0, 0, 0.3),
             0 0 0 1px rgba(255, 255, 255, 0.25);
+    }
+
+    .error-message {
+        color: #ff6b6b;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+        text-align: center;
+        animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     :global(body) {
