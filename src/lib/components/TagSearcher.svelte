@@ -1,20 +1,20 @@
 <script lang="ts">
-	import { filters, listTags } from '$lib/database';
-	
+    import { filters, listTags } from '$lib/database';
+  
     // Propiedades del componente
     let { tag = $bindable(), onsubmit } = $props();
-    let searchInput = $state("")
+    let searchInput = $state("");
     let matchingTags;
+  
     // Función para manejar la búsqueda
     function handleSearch() {
       // Obtener las etiquetas que coinciden con el valor de búsqueda
-       matchingTags = listTags(filters.tagLike(searchInput));
+      matchingTags = listTags(filters.tagLike(searchInput));
   
       // Si hay coincidencias, devolver la primera etiqueta encontrada
       if (matchingTags.length > 0) {
         tag = matchingTags[0]; // Devuelve la primera etiqueta coincidente
       }
-      
     }
   </script>
   
@@ -39,9 +39,19 @@
       font-size: 14px;
     }
   
-    .search-icon {
+    .search-button {
+      background-color: #007bff; /* Color de fondo del botón */
+      color: white; /* Color del texto */
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
       cursor: pointer;
-      color: #666;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+  
+    .search-button:hover {
+      background-color: #0056b3; /* Color de fondo al pasar el ratón */
     }
   </style>
   
@@ -52,20 +62,8 @@
       placeholder="Buscar..."
       onchange={handleSearch}
     />
-
-    <svg
-      class="search-icon"
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      onclick={onsubmit}
-    >
-      <circle cx="11" cy="11" r="8"></circle>
-      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-    </svg>
+  
+    <button class="search-button" onclick={onsubmit}>
+      Buscar
+    </button>
   </div>
