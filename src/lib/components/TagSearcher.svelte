@@ -1,10 +1,22 @@
 <script lang="ts">
-   // Función para devolver el valor al padre
-   let { value = $bindable() , onsubmit } = $props();
+	import { filters, listTags } from '$lib/database';
+	
+    // Propiedades del componente
+    let { tag = $bindable(), onsubmit } = $props();
+    let searchInput = $state("")
+    
+    // Función para manejar la búsqueda
+    function handleSearch() {
+      // Obtener las etiquetas que coinciden con el valor de búsqueda
+      const matchingTags = listTags(filters.tagLike(searchInput));
   
-</script>
-
-
+      // Si hay coincidencias, devolver la primera etiqueta encontrada
+      if (matchingTags.length > 0) {
+        tag = matchingTags[0]; // Devuelve la primera etiqueta coincidente
+      }
+    }
+  </script>
+  
   <style>
     .search-bar {
       display: flex;
@@ -36,10 +48,11 @@
     <input
       type="text"
       class="search-input"
-      bind:value={value}
+      bind:value={searchInput}
       placeholder="Buscar..."
-      onkeydown={onsubmit}
+      oninput={handleSearch}
     />
+
     <svg
       class="search-icon"
       width="16"
@@ -50,9 +63,9 @@
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
+      onclick={onsubmit}
     >
       <circle cx="11" cy="11" r="8"></circle>
       <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
     </svg>
   </div>
-  
