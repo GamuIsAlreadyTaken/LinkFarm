@@ -11,11 +11,11 @@ Searcher -> tag > user [] => UserExpositor (user)
 UserExpositor(user, tag?) -> tag > user.post [] > post.resource []
     list tag (filter)
     list posts (user)
-    list resources (user, post)
+    list resources (user, tag)
 
 types { user, tag, post, resource }
 
 user    : list(filter), get(contactData)
 tag     : list(filter)
 post    : list(user)
-resource: list(user, post)
+resource: list(user, tag)
