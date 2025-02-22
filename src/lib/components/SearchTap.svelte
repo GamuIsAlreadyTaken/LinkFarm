@@ -1,39 +1,35 @@
 <script lang="ts">
-  import SearchBar from '$lib/components/TagSearcher.svelte';
-  import { listUserProfile, filters } from '$lib/database';
-  import type { Tag, UserProfile } from '$lib/types';
-  import Profile from './Profile.svelte';
+  import SearchBar from "$lib/components/TagSearcher.svelte";
+  import { listUserProfile, filters } from "$lib/database";
+  import type { Tag, UserProfile } from "$lib/types";
+  import Profile from "./Profile.svelte";
 
-  let searchValue: Tag | null = null;
-  let users: UserProfile[] = [];
+  let tag: Tag | undefined = $state();
+  let users : UserProfile[] = $props();
 
-  const handleSearchSubmit = (event: KeyboardEvent) => {
-    if (event.key === 'Enter' && searchValue) {
-      users = listUserProfile(filters.postHasTag(searchValue)); // Asegúrate de que `listUserProfile` devuelva un valor
+
+  function handleSearchSubmit() {
+    users = listUserProfile(filters.postHasTag(tag!)); // Asegúrate de que `listUserProfile` devuelva un valor
+    
     }
-  };
-
   const handleUserClick = (user: UserProfile) => {
     //Cambiar al perfil
-
   };
 </script>
 
-<main>
-  <SearchBar bind:value={searchValue} onsubmit={handleSearchSubmit} />
+<SearchBar bind:tag onsubmit={handleSearchSubmit} />
 
-  <h2>Usuarios</h2>
-  <ul>
-    {#each users as user}
-      <li>
-        <button on:click={() => handleUserClick(user)} class="user-card">
-          <h3>{user.name}</h3>
-          <p>{user.contactData}</p>
-        </button>
-      </li>
-    {/each}
-  </ul>
-</main>
+<h2>Usuarios</h2>
+<ul>
+  {#each users as user}
+    <li>
+      <button onclick={() => handleUserClick(user)} class="user-card">
+        <h3>{user.name}</h3>
+        <p>{user.contactData}</p>
+      </button>
+    </li>
+  {/each}
+</ul>
 
 <style>
   main {

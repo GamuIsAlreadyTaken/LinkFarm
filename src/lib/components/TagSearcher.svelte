@@ -4,16 +4,17 @@
     // Propiedades del componente
     let { tag = $bindable(), onsubmit } = $props();
     let searchInput = $state("")
-    
+    let matchingTags;
     // Función para manejar la búsqueda
     function handleSearch() {
       // Obtener las etiquetas que coinciden con el valor de búsqueda
-      const matchingTags = listTags(filters.tagLike(searchInput));
+       matchingTags = listTags(filters.tagLike(searchInput));
   
       // Si hay coincidencias, devolver la primera etiqueta encontrada
       if (matchingTags.length > 0) {
         tag = matchingTags[0]; // Devuelve la primera etiqueta coincidente
       }
+      
     }
   </script>
   
@@ -46,11 +47,10 @@
   
   <div class="search-bar">
     <input
-      type="text"
       class="search-input"
       bind:value={searchInput}
       placeholder="Buscar..."
-      oninput={handleSearch}
+      onchange={handleSearch}
     />
 
     <svg

@@ -25,7 +25,7 @@
   {/if}
 </div>
 
-<button on:click={quary}>
+<button onclick={quary}>
   Buscar
 </button>
 

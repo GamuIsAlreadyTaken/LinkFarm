@@ -78,7 +78,7 @@ export const getUserProfile: (contactData: string) => UserProfile | undefined =
         return tempdb.users.find(p => p.contactData == contactData)
     }
 
-export const listUserProfile: (filter: Filter<Post>) => UserProfile[] =
+export const listUserProfile: (filter: Filter<Post>) => UserProfile[] = //Lista de perfiles de usuario 
     filter => {
         return tempdb.users.filter(u => u.posts.find(filter))
     }
