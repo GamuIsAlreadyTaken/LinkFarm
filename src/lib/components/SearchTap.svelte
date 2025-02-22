@@ -31,44 +31,77 @@
 {/each}
 
 <style>
-  main {
-    padding: 20px;
+  :global(body) {
+    background-color: #121212; /* Fondo oscuro general */
+    color: #ffffff; /* Texto blanco por defecto */
+    font-family: 'Arial', sans-serif;
   }
 
-  h2 {
-    margin-top: 20px;
+  .profile {
+    padding: 2rem;
+    border: 1px solid #333333;
+    border-radius: 16px;
+    background-color: #1e1e1e; /* Fondo oscuro para el contenedor */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin: 2rem auto;
+    text-align: center;
   }
 
-  ul {
-    list-style-type: none;
-    padding-left: 0;
+  .profile-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
   }
 
-  li {
-    margin-bottom: 10px;
+  .profile-contact {
+    font-size: 1.1rem;
+    color: #b0b0b0; /* Texto gris claro */
+    margin-bottom: 1.5rem;
   }
 
-  .user-card {
-    background: #fff;
-    border: 2px solid #ccc;
-    padding: 10px;
-    cursor: pointer;
-    display: block;
-    margin: 5px 0;
-    transition: background-color 0.3s ease;
+  .profile-posts-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
   }
 
-  .user-card:hover {
-    background-color: #f0f0f0;
+  .posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
-  h3 {
+  .profile-not-found {
     font-size: 1.2rem;
-    font-weight: bold;
+    color: #ff6b6b; /* Rojo suave para errores */
+    text-align: center;
+    margin: 2rem 0;
   }
 
-  p {
+  .search-button {
+    display: block;
+    margin: 2rem auto;
+    padding: 0.75rem 1.5rem;
     font-size: 1rem;
-    color: #555;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradiente moderno */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .search-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .search-button:active {
+    transform: translateY(0);
   }
 </style>
