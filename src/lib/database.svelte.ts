@@ -64,12 +64,12 @@ const tempdb = $state({
                     ]
                 },
                 {
-                    tag: tags[2],
+                    tag: tags[3],
                     resources: [
                         { type: "project", description: "(Insert Project description)" },
                         { type: "bug", description: "(Bug description + solution)" },
                         { type: "docs", description: "(Documentation)" },
-                    ] 
+                    ]
                 },
                 {
                     tag: tags[1],
@@ -80,7 +80,264 @@ const tempdb = $state({
                     ]
                 },
             ]
-        }
+        },
+        {
+            name: "Alejandra Rodríguez Gómez",
+            contactData: "a.rodriguez.gomez",
+            posts: [
+                {
+                    tag: tags[2],
+                    resources: [
+                        {
+                            type: "project",
+                            description: "(Insert Project description)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        },
+                        {
+                            type: "bug",
+                            description: "(Bug description + solution)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        },
+                        {
+                            type: "docs",
+                            description: "(Documentation)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        }
+                    ]
+                },
+                {
+                    tag: tags[3],
+                    resources: [
+                        {
+                            type: "project",
+                            description: "(Insert Project description)"
+                        },
+                        {
+                            type: "bug",
+                            description: "(Bug description + solution)"
+                        },
+                        {
+                            type: "docs",
+                            description: "(Documentation)"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            name: "Lucía Fernández Sánchez",
+            contactData: "l.fernandez.sanchez",
+            posts: [
+                {
+                    tag: tags[3],
+                    resources: [
+                        {
+                            type: "project",
+                            description: "(Insert Project description)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        },
+                        {
+                            type: "bug",
+                            description: "(Bug description + solution)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        },
+                        {
+                            type: "docs",
+                            description: "(Documentation)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        }
+                    ]
+                },
+                {
+                    tag: tags[0],
+                    resources: [
+                        {
+                            type: "project",
+                            description: "(Insert Project description)"
+                        },
+                        {
+                            type: "bug",
+                            description: "(Bug description + solution)"
+                        },
+                        {
+                            type: "docs",
+                            description: "(Documentation)"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            name: "María Gómez Fernández",
+            contactData: "m.gomez.fernandez",
+            posts: [
+                {
+                    tag: tags[4],
+                    resources: [
+                        {
+                            type: "project",
+                            description: "(Insert Project description)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        },
+                        {
+                            type: "bug",
+                            description: "(Bug description + solution)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        },
+                        {
+                            type: "docs",
+                            description: "(Documentation)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        }
+                    ]
+                },
+                {
+                    tag: tags[3],
+                    resources: [
+                        {
+                            type: "project",
+                            description: "(Insert Project description)"
+                        },
+                        {
+                            type: "bug",
+                            description: "(Bug description + solution)"
+                        },
+                        {
+                            type: "docs",
+                            description: "(Documentation)"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            name: "Juan Pérez Rodríguez",
+            contactData: "j.perez.rodriguez",
+            posts: [
+                {
+                    tag: tags[1],
+                    resources: [
+                        {
+                            type: "project",
+                            description: "(Insert Project description)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        },
+                        {
+                            type: "bug",
+                            description: "(Bug description + solution)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        },
+                        {
+                            type: "docs",
+                            description: "(Documentation)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        }
+                    ]
+                },
+                {
+                    tag: tags[3],
+                    resources: [
+                        {
+                            type: "project",
+                            description: "(Insert Project description)"
+                        },
+                        {
+                            type: "bug",
+                            description: "(Bug description + solution)"
+                        },
+                        {
+                            type: "docs",
+                            description: "(Documentation)"
+                        }
+                    ]
+                }
+            ]
+        }, {
+            name: "Laura Sánchez Rodríguez",
+            contactData: "l.sanchez.rodriguez",
+            posts: [
+                {
+                    tag: tags[3],
+                    resources: [
+                        {
+                            type: "project",
+                            description: "(Insert Project description)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        },
+                        {
+                            type: "bug",
+                            description: "(Bug description + solution)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        },
+                        {
+                            type: "docs",
+                            description: "(Documentation)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        }
+                    ]
+                },
+                {
+                    tag: tags[1],
+                    resources: [
+                        {
+                            type: "project",
+                            description: "(Insert Project description)"
+                        },
+                        {
+                            type: "bug",
+                            description: "(Bug description + solution)"
+                        },
+                        {
+                            type: "docs",
+                            description: "(Documentation)"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            name: "Carlos Fernández Gómez",
+            contactData: "c.fernandez.gomez",
+            posts: [
+                {
+                    tag: tags[2],
+                    resources: [
+                        {
+                            type: "project",
+                            description: "(Insert Project description)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        },
+                        {
+                            type: "bug",
+                            description: "(Bug description + solution)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        },
+                        {
+                            type: "docs",
+                            description: "(Documentation)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        }
+                    ]
+                },
+                {
+                    tag: tags[3],
+                    resources: [
+                        {
+                            type: "project",
+                            description: "(Insert Project description)"
+                        },
+                        {
+                            type: "bug",
+                            description: "(Bug description + solution)"
+                        },
+                        {
+                            type: "docs",
+                            description: "(Documentation)"
+                        }
+                    ]
+                }
+            ]
+        },
     ] as UserProfile[],
     tags
 })
@@ -125,6 +382,7 @@ export const listTag: (filter: Filter<Tag>) => Tag[] =
 
 export const postTag: (tag: Tag) => void =
     tag => {
+        if (tempdb.tags.includes(tag)) return
         tempdb.tags.push(tag)
     }
 
@@ -138,7 +396,9 @@ export const listPost: (user: UserProfile) => Post[] =
 
 export const postPost: (user: UserProfile, post: Pick<Post, "tag">) => void =
     (user, post) => {
-        tempdb.users.find(u => user.contactData == u.contactData)?.posts.push({ ...post, resources: [] })
+        const u = tempdb.users.find(u => userEq(u, user))
+        if (!u || u.posts.find(p => tagEq(p.tag, post.tag))) return
+        u.posts.push({ ...post, resources: [] })
     }
 // Resource { post }
 export const listResource: (user: UserProfile, tag: Tag) => Resource[] =

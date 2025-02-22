@@ -10,33 +10,32 @@
 </script>
 
 {#if state != "login"}
-<nav>
-    <button
-        onclick={() => {
-            state = "search";
-        }}
-        class:selected={state == "search"}
-    >
-        Buscar
-    </button>
-    <button
-        onclick={() => {
-            state = "profile";
-        }}
-        class:selected={state == "profile"}
-    >
-        Mi perfil
-    </button>
-    <button
-        onclick={() => {
-            state = "login";
-        }}
-    >
-        Logout
-    </button>
-</nav>
+    <nav>
+        <button
+            onclick={() => {
+                state = "search";
+            }}
+            class:selected={state == "search"}
+        >
+            Buscar
+        </button>
+        <button
+            onclick={() => {
+                state = "profile";
+            }}
+            class:selected={state == "profile"}
+        >
+            Mi perfil
+        </button>
+        <button
+            onclick={() => {
+                state = "login";
+            }}
+        >
+            Logout
+        </button>
+    </nav>
 {/if}
-
 
 <div>
     <div>
@@ -49,17 +48,17 @@
             ></SearchTap>
         {/if}
     </div>
-</div> 
+</div>
+
 <style>
     div {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 30px;
     }
 
     nav {
-        padding-top: 50px;
+        padding: 50px 0;
         display: flex;
         justify-content: center;
 
@@ -69,7 +68,6 @@
             color: #fff;
             padding: 5px 20px;
             margin: 0;
-            
         }
         .selected {
             background-color: #888;

@@ -2,7 +2,6 @@
   import Post from "$lib/components/Post.svelte";
   import { postPost } from "$lib/database.svelte";
   import type { Tag, UserProfile } from "$lib/types.ts";
-  import TagCreater from "./TagCreater.svelte";
   import TagSearcher from "./TagSearcher.svelte";
 
   let { user }: { user: UserProfile } = $props();
@@ -20,28 +19,33 @@
     {#each user.posts as post}
       <Post {post} {user} />
     {/each}
+
+    {#if !toggle}
+      <label class="icon">
+        <input type="checkbox" bind:checked={toggle} />
+      </label>
+    {:else}
+      <TagSearcher
+        bind:tag={string!}
+        onsubmit={() => {
+          toggle = !toggle;
+          postPost(user, { tag: string! });
+        }}
+      ></TagSearcher>
+    {/if}
   </div>
 </div>
-
-{#if !toggle}
-  <div class="icon">
-    <input type="checkbox" bind:checked={toggle} />
-  </div>
-{:else}
-  <TagSearcher
-    bind:tag={string}
-    onsubmit={() => {
-      toggle = !toggle;
-      postPost(user, { tag: string! });
-    }}
-  ></TagSearcher>
-{/if}
 
 <style>
   :global(body) {
     background-color: #121212; /* Fondo oscuro general */
     color: #ffff; /*Texto lanco por defecto */
     font-family: "Arial", sans-serif;
+  }
+  .profile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .profile {

@@ -26,12 +26,12 @@
 <div class="post-container">
   <div class="bottom-down">
     <h2 class="tag">{post.tag.name}</h2>
-    <div class="icon">
+    <label class="icon">
       <input type="checkbox" bind:checked={toggle} />
-    </div>
+    </label>
   </div>
   {#if toggle}
-    <div class="post-container">
+    <div class="container">
       <input
         type="text"
         placeholder="Enlace al recurso"
@@ -77,6 +77,24 @@
     justify-content: space-evenly;
   }
 
+  .container {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+
+
+  }
+
+  input, select, button {
+    border: none;
+    border-radius: 5px;
+    height: 2em;
+  }
+
   input::placeholder {
     color: white;
     font-style: italic;
@@ -100,6 +118,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     margin: 20px auto;
+    width: min(60%, 600px)
   }
 
   .tag {

@@ -12,10 +12,11 @@
   }
 </script>
 
-<SearchBar bind:tag {onsubmit} />
+<SearchBar bind:tag={tag!} {onsubmit} />
 
-<h2>Usuarios</h2>
-
+{#if users.length >= 1}
+  <h2>Usuarios</h2>
+{/if}
 {#each users as _user}
   <button
     onclick={() => {
