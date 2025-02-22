@@ -33,65 +33,77 @@
 </button>
 
 <style>
-  .profile-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    width: 100%;
-    position: relative;
-    background-image: url('https://gradiant.org/wp-content/uploads/2015/12/analisis_multimedia.webp'); /* Imagen de fondo */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .gradient-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.5) 0%,
-      rgba(0, 0, 0, 0.4) 100%
-    );
-    z-index: 1;
-  }
-
-  .profile-content {
-    padding: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Borde semi-transparente */
-    border-radius: 8px;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
-    text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 2;
-    color: white; /* Color del texto */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para mejorar la legibilidad */
-  }
-
-  button {
-    margin-top: 1rem;
-    padding: 8px 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-  }
-
-  button:hover {
-    background-color: #0056b3;
-  }
-
   :global(body) {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #121212; /* Fondo oscuro general */
+    color: #ffffff; /* Texto blanco por defecto */
+    font-family: 'Arial', sans-serif;
+  }
+
+  .profile {
+    padding: 2rem;
+    border: 1px solid #333333;
+    border-radius: 16px;
+    background-color: #1e1e1e; /* Fondo oscuro para el contenedor */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin: 2rem auto;
+    text-align: center;
+  }
+
+  .profile-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+
+  .profile-contact {
+    font-size: 1.1rem;
+    color: #b0b0b0; /* Texto gris claro */
+    margin-bottom: 1.5rem;
+  }
+
+  .profile-posts-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+  }
+
+  .posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .profile-not-found {
+    font-size: 1.2rem;
+    color: #ff6b6b; /* Rojo suave para errores */
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  .search-button {
+    display: block;
+    margin: 2rem auto;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradiente moderno */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .search-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .search-button:active {
+    transform: translateY(0);
   }
 </style>
