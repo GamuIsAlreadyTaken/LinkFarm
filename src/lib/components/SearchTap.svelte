@@ -5,7 +5,7 @@
   import Profile from "./Profile.svelte";
 
   let tag: Tag | undefined = $state();
-  let users : UserProfile[] = $props();
+  let users : UserProfile[] | undefined = $state();
 
 
   function handleSearchSubmit() {
@@ -15,13 +15,15 @@
   const handleUserClick = (user: UserProfile) => {
     //Cambiar al perfil
   };
+  
 </script>
 
 <SearchBar bind:tag onsubmit={handleSearchSubmit} />
 
 <h2>Usuarios</h2>
 <ul>
-  {#each users as user}
+  
+  {#each users! as user}
     <li>
       <button onclick={() => handleUserClick(user)} class="user-card">
         <h3>{user.name}</h3>
