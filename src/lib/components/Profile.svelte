@@ -18,7 +18,7 @@
 
     <h3>📌 Publicaciones:</h3>
     {#each user.posts as post}
-      <Post {post} />
+      <Post {post} {user} />
     {/each}
   </div>
 </div>
