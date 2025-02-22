@@ -1,9 +1,14 @@
 import Gun from "gun"
 import type { UserProfile, Tag, Post, Resource } from "$lib/types"
 
-const TIMEOUT = 500
+const tags = [
+    { type: "language", name: "JS" },
+    { type: "language", name: "TS" },
+    { type: "language", name: "C" },
+    { type: "language", name: "C++" },
+    { type: "library", name: "string.h" }
+] as Tag[]
 
-export const db = Gun().get("tmtupqylqymdpptpedqseqflndbqsliaiqisatpaqiaetttmtmgpnspq2")
 const tempdb = $state({
     users: [
         {
@@ -12,16 +17,18 @@ const tempdb = $state({
             contactData: "j",
             posts: [
                 {
-                    tag: { type: "language", name: "JS" },
+                    tag: tags[3],
                     resources: [
-                        { type: "project", description: "(Insert Project description)",
-                             reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es" },
-                        { type: "bug", description: "(Bug description + solution)",reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es" },
+                        {
+                            type: "project", description: "(Insert Project description)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        },
+                        { type: "bug", description: "(Bug description + solution)", reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es" },
                         { type: "docs", description: "(Documentation)", reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es" },
                     ]
                 },
                 {
-                    tag: { type: "language", name: "TS" },
+                    tag: tags[2],
                     resources: [
                         { type: "project", description: "(Insert Project description)" },
                         { type: "bug", description: "(Bug description + solution)" },
@@ -38,16 +45,18 @@ const tempdb = $state({
             contactData: "s",
             posts: [
                 {
-                    tag: { type: "language", name: "C" },
+                    tag: tags[0],
                     resources: [
-                        { type: "project", description: "(Insert Project description)",
-                             reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es" },
-                        { type: "bug", description: "(Bug description + solution)",reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es" },
+                        {
+                            type: "project", description: "(Insert Project description)",
+                            reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es"
+                        },
+                        { type: "bug", description: "(Bug description + solution)", reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es" },
                         { type: "docs", description: "(Documentation)", reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es" },
                     ]
                 },
                 {
-                    tag: { type: "language", name: "string.h" },
+                    tag: tags[4],
                     resources: [
                         { type: "project", description: "(Insert Project description)" },
                         { type: "bug", description: "(Bug description + solution)" },
@@ -55,15 +64,15 @@ const tempdb = $state({
                     ]
                 },
                 {
-                    tag: { type: "language", name: "JS" },
+                    tag: tags[2],
                     resources: [
                         { type: "project", description: "(Insert Project description)" },
                         { type: "bug", description: "(Bug description + solution)" },
                         { type: "docs", description: "(Documentation)" },
-                    ]
+                    ] 
                 },
                 {
-                    tag: { type: "language", name: "TS" },
+                    tag: tags[1],
                     resources: [
                         { type: "project", description: "(Insert Project description)" },
                         { type: "bug", description: "(Bug description + solution)" },
@@ -73,13 +82,7 @@ const tempdb = $state({
             ]
         }
     ] as UserProfile[],
-    tags: [
-        { type: "language", name: "JS" },
-        { type: "language", name: "TS" },
-        { type: "language", name: "C" },
-        { type: "language", name: "C++" },
-        { type: "language", name: "string.h" }
-    ] as Tag[]
+    tags
 })
 
 type Filter<T> = (_: T) => boolean
@@ -88,7 +91,7 @@ const postHasTag: (tag: Tag) => Filter<Post> =
     tag => post => tagEq(post.tag, tag)
 
 const tagLike: (tagPart: string) => Filter<Tag> =
-    part => tag => tag.name.includes(part)
+    part => tag => tag.name.toLocaleLowerCase().includes(part.toLocaleLowerCase())
 
 export const filters = {
     postHasTag,
@@ -155,6 +158,8 @@ export const postResource: (user: UserProfile, tag: Tag, resource: Resource) => 
 
 
 // ## Real ##
+export const db = Gun().get("tmtupqylqymdpptpedqseqflndbqsliaiqisatpaqiaetttmtmgpnspq2")
+const TIMEOUT = 500
 
 export const real_getUserProfile: (contactData: string) => Promise<UserProfile | undefined> =
     contactData => new Promise((ok, err) => {
