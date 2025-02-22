@@ -31,77 +31,108 @@
 {/each}
 
 <style>
-  :global(body) {
-    background-color: #121212; /* Fondo oscuro general */
-    color: #ffffff; /* Texto blanco por defecto */
-    font-family: 'Arial', sans-serif;
+  main {
+    padding: 20px;
+    background-color: #0a0f1f;
+    color: #e0e0e0;
+    min-height: 100vh;
   }
 
-  .profile {
-    padding: 2rem;
-    border: 1px solid #333333;
-    border-radius: 16px;
-    background-color: #1e1e1e; /* Fondo oscuro para el contenedor */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
-    max-width: 600px;
-    margin: 2rem auto;
+  h2 {
+    margin-top: 20px;
+    color: #86c5ff;
+    font-size: 24px;
+    font-weight: 700;
     text-align: center;
   }
 
-  .profile-name {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 1rem;
-  }
-
-  .profile-contact {
-    font-size: 1.1rem;
-    color: #b0b0b0; /* Texto gris claro */
-    margin-bottom: 1.5rem;
-  }
-
-  .profile-posts-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 1.5rem;
-  }
-
-  .posts-container {
+  .user-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 12px;
+    align-items: center;
   }
 
-  .profile-not-found {
-    font-size: 1.2rem;
-    color: #ff6b6b; /* Rojo suave para errores */
-    text-align: center;
-    margin: 2rem 0;
-  }
-
-  .search-button {
-    display: block;
-    margin: 2rem auto;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #ffffff;
-    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradiente moderno */
-    border: none;
+  .user-card {
+    background: linear-gradient(135deg, #2a3d66, #3454a1);
+    border: 2px solid #2f3c56;
+    padding: 16px;
+    width: 90%;
+    max-width: 400px;
     border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    display: block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }
 
-  .search-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+  .user-card:hover {
+    background: linear-gradient(135deg, #3454a1, #1f2a48);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   }
 
-  .search-button:active {
-    transform: translateY(0);
+  h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #d1d1d1;
+  }
+
+  /* Estilos para la búsqueda */
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 350px;
+    background: linear-gradient(135deg, #1a233a, #2c3e67);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .search-bar:hover {
+    transform: scale(1.05);
+  }
+
+  .search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    background: transparent;
+    color: #e0e0e0;
+  }
+
+  .search-input::placeholder {
+    color: #a0a0b0;
+  }
+
+  .search-icon {
+    cursor: pointer;
+    color: #86c5ff;
+    transition: color 0.3s ease;
+  }
+
+  .search-icon:hover {
+    color: #b0d1ff;
   }
 </style>
