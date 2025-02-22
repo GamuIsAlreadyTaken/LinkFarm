@@ -17,29 +17,38 @@
 </script>
 
 <div class="post-container">
-  <div>
+  <div class = "bottom-down">
     <h2 class="tag">{post.tag.name}</h2>
-    <input type="checkbox" bind:checked={toggle} class="Giro"/>
+    <input type="checkbox" bind:checked={toggle} class="Giro" />
   </div>
   {#if toggle}
-    <input type="text" placeholder="Enlace al recurso" bind:value={reference} />
-    <input
-      type="text"
-      placeholder="Descripcion del recurso"
-      bind:value={description}
-    />
-    <select bind:value={type}>
-      <option value="experience">experience</option>
-      <option value="project">project</option>
-      <option value="bug">bug</option>
-      <option value="docs">docs</option>
-    </select>
-    <button
-      onclick={() => {
-        toggle = !toggle;
-        postResource(user, post.tag, { description, reference, type });
-      }}>Guardar</button
-    >
+    <div class="post-container" >
+      <input
+        type="text"
+        placeholder="Enlace al recurso"
+        bind:value={reference}
+        class="input-spacing"
+      />
+      <input
+        type="text"
+        placeholder="Descripcion del recurso"
+        bind:value={description}
+        class="inpuut-spacing"
+      />
+      <select bind:value={type} class="input-spacing">
+        <option value="experience">experience</option>
+        <option value="project">project</option>
+        <option value="bug">bug</option>
+        <option value="docs">docs</option>
+      </select>
+      <button
+        onclick={() => {
+          toggle = !toggle;
+          postResource(user, post.tag, { description, reference, type });
+        }}
+        class="input-spacing">Guardar</button
+      >
+    </div>
   {/if}
   <div class="resources-container">
     {#each post.resources as des}
@@ -49,6 +58,29 @@
 </div>
 
 <style>
+  
+  .bottom-down{
+    height: 50px; /* Ajusta la altura al valor que necesites */
+  overflow: hidden; 
+  }
+
+  input::placeholder {
+    color: white; /* Cambia este color según lo que necesites */
+    font-style: italic; /* Opcional: agrega estilo */
+    opacity: 1; /* Asegura que el color sea completamente visible */
+  }
+
+  .input-spacing {
+    background: #7864d3;
+    color: white;
+  }
+
+  .inpuut-spacing {
+    margin-bottom: 10px;
+    background: #7864d3;
+    color: white;
+  }
+
   .post-container {
     background-color: #333333;
     border: 1px solid #e0e0e0;
@@ -78,7 +110,7 @@
 
   .des {
     text-deration: none;
-    color: #333;
+    color: white;
     font-size: 18px;
     padding: 10px;
     background: #7864d3;
@@ -92,11 +124,11 @@
     cursor: pointer;
   }
 
- .Giro {
+  .Giro {
     visibility: hidden;
   }
 
-  .Giro:checked::before{
+  .Giro:checked::before {
     rotate: 45deg;
   }
 
@@ -104,7 +136,7 @@
     content: "+";
     display: inline-block;
     border-radius: 50%;
-    font-size:1.5em;
+    font-size: 1.5em;
     width: 30px;
     transition: rotate 300ms ease;
     aspect-ratio: 1/1;
@@ -115,7 +147,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
   }
-
 </style>
