@@ -34,6 +34,22 @@ const tempdb = {
                 {
                     tag: { type: "language", name: "bloste" },
                     resources: [
+                        { type: "project", description: "blosteando el camino dnsdjak dkjashdkjh dajasdjaiosj" },
+                        { type: "bug", description: "no salen las lukas" },
+                        { type: "docs", description: "crotolamos en la naturaleza" },
+                    ]
+                },
+                {
+                    tag: { type: "language", name: "crotolamo" },
+                    resources: [
+                        { type: "project", description: "blosteando el camino" },
+                        { type: "bug", description: "no salen las lukas" },
+                        { type: "docs", description: "crotolamos en la naturaleza" },
+                    ]
+                },
+                {
+                    tag: { type: "language", name: "crotolamo" },
+                    resources: [
                         { type: "project", description: "blosteando el camino" },
                         { type: "bug", description: "no salen las lukas" },
                         { type: "docs", description: "crotolamos en la naturaleza" },
