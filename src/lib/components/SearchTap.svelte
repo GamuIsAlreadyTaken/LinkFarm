@@ -5,33 +5,30 @@
   import Profile from "./Profile.svelte";
 
   let tag: Tag | undefined = $state();
-  let users : UserProfile[] | undefined = $state();
-
+  let users: UserProfile[] | undefined = $state();
+  let { user = $bindable(), clickpro } = $props();
 
   function handleSearchSubmit() {
     users = listUserProfile(filters.postHasTag(tag!)); // Asegúrate de que `listUserProfile` devuelva un valor
-    
-    }
-  const handleUserClick = (user: UserProfile) => {
-    //Cambiar al perfil
+  }
+  const handleUserClick = (us: UserProfile) => {
+    user = us;
+    clickpro();
   };
-  
 </script>
 
 <SearchBar bind:tag onsubmit={handleSearchSubmit} />
 
 <h2>Usuarios</h2>
-<ul>
-  
-  {#each users! as user}
-    <li>
-      <button onclick={() => handleUserClick(user)} class="user-card">
-        <h3>{user.name}</h3>
-        <p>{user.contactData}</p>
-      </button>
-    </li>
-  {/each}
-</ul>
+
+{#each users! as us}
+  <li>
+    <button onclick={() => handleUserClick(us)} class="user-card">
+      <h3>{us.name}</h3>
+      <p>{us.contactData}</p>
+    </button>
+  </li>
+{/each}
 
 <style>
   main {

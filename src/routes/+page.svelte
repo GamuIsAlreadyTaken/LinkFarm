@@ -14,5 +14,5 @@
 {:else if state == 1}
     <Profile userName={user} quary={() => (state = 2)}></Profile>
 {:else if state == 2}
-    <SearchTap></SearchTap>
+    <SearchTap bind:user clickpro={() => (state = 1)} ></SearchTap>
 {/if}
