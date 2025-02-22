@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { filters, listTags } from '$lib/database';
+    import { filters, listTag } from '$lib/database';
   
     // Propiedades del componente
     let { tag = $bindable(), onsubmit } = $props();
@@ -9,7 +9,7 @@
     // Función para manejar la búsqueda
     function handleSearch() {
       // Obtener las etiquetas que coinciden con el valor de búsqueda
-      matchingTags = listTags(filters.tagLike(searchInput));
+      matchingTags = listTag(filters.tagLike(searchInput));
   
       // Si hay coincidencias, devolver la primera etiqueta encontrada
       if (matchingTags.length > 0) {

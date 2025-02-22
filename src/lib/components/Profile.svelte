@@ -1,42 +1,27 @@
 <script lang="ts">
-  import { getUserProfile } from "$lib/database";
   import Post from "$lib/components/Post.svelte";
   import type { UserProfile } from "$lib/types.ts";
 
-  let { quary, userName } = $props();
-  let user: UserProfile | undefined = getUserProfile(userName.contactData);
-
-  if (!user) {
-    console.error(`No se encontró un usuario con el nombre ${userName}`);
-  }
+  let { user }: { user: UserProfile } = $props();
 </script>
 
-<div class="profile-container">
-  <div class="gradient-overlay"></div>
+<div class="profile">
   <div class="profile-content">
-    {#if user}
-      <h2>{user.name}</h2>
-      <p>📧 Contacto: {user.contactData}</p>
+    <h2 class="profile-name">{user.name}</h2>
+    <p class="profile-contact">📧 Contacto: {user.contactData}</p>
 
-      <h3>📌 Publicaciones:</h3>
-      {#each user.posts as post}
-        <Post {post} />
-      {/each}
-    {:else}
-      <p>Usuario no encontrado.</p>
-    {/if}
+    <h3>📌 Publicaciones:</h3>
+    {#each user.posts as post}
+      <Post {post} />
+    {/each}
   </div>
 </div>
-
-<button on:click={quary}>
-  Buscar
-</button>
 
 <style>
   :global(body) {
     background-color: #121212; /* Fondo oscuro general */
     color: #ffffff; /* Texto blanco por defecto */
-    font-family: 'Arial', sans-serif;
+    font-family: "Arial", sans-serif;
   }
 
   .profile {
@@ -45,7 +30,7 @@
     border-radius: 16px;
     background-color: #1e1e1e; /* Fondo oscuro para el contenedor */
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
-    max-width: 600px;
+    width: max(50vw, 600px);
     margin: 2rem auto;
     text-align: center;
   }
@@ -63,47 +48,5 @@
     margin-bottom: 1.5rem;
   }
 
-  .profile-posts-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 1.5rem;
-  }
-
-  .posts-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .profile-not-found {
-    font-size: 1.2rem;
-    color: #ff6b6b; /* Rojo suave para errores */
-    text-align: center;
-    margin: 2rem 0;
-  }
-
-  .search-button {
-    display: block;
-    margin: 2rem auto;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #ffffff;
-    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradiente moderno */
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  }
-
-  .search-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
-  }
-
-  .search-button:active {
-    transform: translateY(0);
-  }
+  
 </style>

@@ -1,22 +1,14 @@
 <script lang="ts">
     import { getUserProfile } from "$lib/database";
-    
-    let { goSearcher, user = $bindable() } = $props();
+
+    let { onlogin, user = $bindable() } = $props();
     let login = $state("");
-    
-    function checkuser() {
-        user = getUserProfile(login);
-        console.log(user);
-        if (user != undefined) {
-            goSearcher();
-        }
-    }
 </script>
 
 <div class="login-container">
     <div class="gradient-overlay"></div>
     <div class="login-content">
-        <img 
+        <img
             src="https://gradiant.org/wp-content/uploads/2024/10/LogoGradiant-2.svg"
             alt="Gradiant Logo"
             class="logo"
@@ -25,7 +17,10 @@
             class="search-input"
             bind:value={login}
             placeholder="Acount"
-            on:change={checkuser}
+            onchange={() => {
+                user = getUserProfile(login);
+                if (user) onlogin();
+            }}
         />
     </div>
 </div>
@@ -36,9 +31,9 @@
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        width: 100%;
+        width: 100vw;
         position: relative;
-        background-image: url('https://gradiant.org/wp-content/uploads/2024/12/Gradiant_TecnologiaImpactoReal-2048x1379.webp');
+        background-image: url("https://gradiant.org/wp-content/uploads/2024/12/Gradiant_TecnologiaImpactoReal-2048x1379.webp");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -84,7 +79,7 @@
         border: 2px solid rgba(255, 255, 255, 0.15);
         border-radius: 16px;
         outline: none;
-        box-shadow: 
+        box-shadow:
             0 4px 24px rgba(0, 0, 0, 0.2),
             0 0 0 1px rgba(255, 255, 255, 0.05);
         transition: all 0.3s ease;
@@ -99,7 +94,7 @@
     .search-input:hover {
         transform: scale(1.02);
         border-color: rgba(255, 255, 255, 0.25);
-        box-shadow: 
+        box-shadow:
             0 8px 32px rgba(0, 0, 0, 0.3),
             0 0 0 1px rgba(255, 255, 255, 0.15);
     }
@@ -108,7 +103,7 @@
         transform: scale(1.02);
         border-color: rgba(255, 255, 255, 0.35);
         background: rgba(26, 26, 26, 0.7);
-        box-shadow: 
+        box-shadow:
             0 8px 32px rgba(0, 0, 0, 0.3),
             0 0 0 1px rgba(255, 255, 255, 0.25);
     }
@@ -117,6 +112,7 @@
         margin: 0;
         padding: 0;
         min-height: 100vh;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            sans-serif;
     }
 </style>

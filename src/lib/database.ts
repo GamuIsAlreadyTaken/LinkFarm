@@ -100,15 +100,13 @@ export const listUserProfile: (filter: Filter<Post>) => UserProfile[] = //Lista 
         return tempdb.users.filter(u => u.posts.find(filter))
     }
 
-
-
 export const postUserProfile: (user: UserProfile) => void =
     user => {
         tempdb.users.push(user)
     }
 
 const userEq: (a: UserProfile, b: UserProfile) => boolean =
-    (a, b) => a.contactData === b.contactData
+    (a, b) => a && b && a.contactData === b.contactData
 
 // Tag { list, post }
 export const listTag: (filter: Filter<Tag>) => Tag[] =
@@ -219,3 +217,5 @@ export const real_listResource: (user: UserProfile, tag: Tag) => Promise<Resourc
             .once()
 
     })
+
+

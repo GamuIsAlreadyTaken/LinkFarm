@@ -2,42 +2,34 @@
   import SearchBar from "$lib/components/TagSearcher.svelte";
   import { listUserProfile, filters } from "$lib/database";
   import type { Tag, UserProfile } from "$lib/types";
-  import Profile from "./Profile.svelte";
 
   let tag: Tag | undefined = $state();
-  let users: UserProfile[] | undefined = $state();
-  let { user = $bindable(), clickpro } = $props();
+  let users: UserProfile[] = $state([]);
+  let { user = $bindable(), onuserselected } = $props();
 
-  function handleSearchSubmit() {
-    users = listUserProfile(filters.postHasTag(tag!)); // Asegúrate de que `listUserProfile` devuelva un valor
+  function onsubmit() {
+    users = listUserProfile(filters.postHasTag(tag!));
   }
-  const handleUserClick = (us: UserProfile) => {
-    user = us;
-    clickpro();
-  };
 </script>
 
-<SearchBar bind:tag onsubmit={handleSearchSubmit} />
+<SearchBar bind:tag {onsubmit} />
 
 <h2>Usuarios</h2>
 
-{#each users! as us}
-  <li>
-    <button onclick={() => handleUserClick(us)} class="user-card">
-      <h3>{us.name}</h3>
-      <p>{us.contactData}</p>
-    </button>
-  </li>
+{#each users as _user}
+  <button
+    onclick={() => {
+      user = _user;
+      onuserselected();
+    }}
+    class="user-card"
+  >
+    <h3>{_user.name}</h3>
+    <p>{_user.contactData}</p>
+  </button>
 {/each}
 
 <style>
-  main {
-    padding: 20px;
-    background-color: #0a0f1f;
-    color: #e0e0e0;
-    min-height: 100vh;
-  }
-
   h2 {
     margin-top: 20px;
     color: #86c5ff;
@@ -65,7 +57,9 @@
     border-radius: 8px;
     cursor: pointer;
     display: block;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }
 
