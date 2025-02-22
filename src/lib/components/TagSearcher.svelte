@@ -1,13 +1,8 @@
-<script>
-    export let placeholder = "Buscar...";
-    let searchQuery = "";
-  
-    function handleSearch() {
-      //Filtrar Usuarios
-    }
-
-
-  </script>
+<script lang="ts">
+   // Función para devolver el valor al padre
+  export function getSearchValue() {
+    return searchQuery.trim();
+  }
   
   <style>
     .search-bar {
@@ -41,8 +36,8 @@
       type="text"
       class="search-input"
       bind:value={searchQuery}
-      placeholder={placeholder}
-      on:input={handleSearch}
+      placeholder="Buscar..."
+      on:keydown={(e) => e.key === 'Enter' && getSearchValue()}
     />
     <svg
       class="search-icon"
