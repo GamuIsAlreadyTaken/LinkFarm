@@ -3,13 +3,10 @@
   import Post from '$lib/components/Post.svelte'
   import type { UserProfile } from '$lib/types.ts';
 
-  // Variable que almacenará el perfil de usuario, queremos que nos lo pasen de la otra página 
-  export let userName: string;
+  export let userName: UserProfile;
 
-  // Obtén el perfil del usuario usando el nombre proporcionado
-  let user: UserProfile | undefined = getUserProfile(userName);
+  let user: UserProfile | undefined = getUserProfile(userName.contactData);
 
-  // Si no hay usuario con ese nombre, muestra un mensaje de error
   if (!user) {
     console.error(`No se encontró un usuario con el nombre ${userName}`);
   }
