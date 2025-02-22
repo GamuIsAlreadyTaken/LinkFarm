@@ -12,7 +12,7 @@
 {#if state == 0}
     <Login bind:user goSearcher={() => (state = 1)} />
 {:else if state == 1}
-    <Profile userName={user}></Profile>
+    <Profile userName={user} quary={() => (state = 2)}></Profile>
 {:else if state == 2}
     <SearchTap></SearchTap>
 {/if}

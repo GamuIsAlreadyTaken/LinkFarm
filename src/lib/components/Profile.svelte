@@ -3,8 +3,7 @@
   import Post from '$lib/components/Post.svelte'
   import type { UserProfile } from '$lib/types.ts';
 
-  export let userName: UserProfile;
-
+  let {quary, userName} = $props();
   let user: UserProfile | undefined = getUserProfile(userName.contactData);
 
   if (!user) {
@@ -25,6 +24,10 @@
     <p>Usuario no encontrado.</p>
   {/if}
 </div>
+
+<button on:click={quary}>
+  Buscar
+</button>
 
 <style>
 
