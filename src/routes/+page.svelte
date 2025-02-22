@@ -5,20 +5,38 @@
     import type { UserProfile } from "$lib/types.ts";
     import Expander from "$lib/components/Expander.svelte";
 
-    let state: "login" | "search" | "profile" = $state("search");
+    let state: "login" | "search" | "profile" = $state("login");
     let user: UserProfile = $state();
 </script>
 
-{#snippet head()}
-    <p>Patata</p>
-{/snippet}
-{#snippet body()}
-    <p>1</p>
-    <p>2</p>
-    <p>3</p>
-{/snippet}
+{#if state != "login"}
+<nav>
+    <button
+        onclick={() => {
+            state = "search";
+        }}
+        class:selected={state == "search"}
+    >
+        Buscar
+    </button>
+    <button
+        onclick={() => {
+            state = "profile";
+        }}
+        class:selected={state == "profile"}
+    >
+        Mi perfil
+    </button>
+    <button
+        onclick={() => {
+            state = "login";
+        }}
+    >
+        Logout
+    </button>
+</nav>
+{/if}
 
-<Expander {head} {body}></Expander>
 
 <div>
     <div>
@@ -31,35 +49,7 @@
             ></SearchTap>
         {/if}
     </div>
-    {#if state != "login"}
-        <nav>
-            <button
-                onclick={() => {
-                    state = "search";
-                }}
-                class:selected={state == "search"}
-            >
-                Buscar
-            </button>
-            <button
-                onclick={() => {
-                    state = "profile";
-                }}
-                class:selected={state == "profile"}
-            >
-                Mi perfil
-            </button>
-            <button
-                onclick={() => {
-                    state = "login";
-                }}
-            >
-                Logout
-            </button>
-        </nav>
-    {/if}
-</div>
-
+</div> 
 <style>
     div {
         display: flex;
@@ -69,12 +59,17 @@
     }
 
     nav {
+        padding-top: 50px;
+        display: flex;
+        justify-content: center;
+
         button {
             border: none;
             background-color: #555;
             color: #fff;
             padding: 5px 20px;
             margin: 0;
+            
         }
         .selected {
             background-color: #888;

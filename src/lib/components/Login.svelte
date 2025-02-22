@@ -16,7 +16,7 @@
         <input
             class="search-input"
             bind:value={login}
-            placeholder="Acount"
+            placeholder="Acount<mail>"
             onchange={() => {
                 user = getUserProfile(login);
                 if (user) onlogin();
@@ -114,5 +114,6 @@
         min-height: 100vh;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
             sans-serif;
+        overflow-x: hidden;
     }
 </style>

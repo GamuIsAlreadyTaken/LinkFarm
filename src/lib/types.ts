@@ -10,8 +10,9 @@ export type Post = {
 }
 
 export type Resource = {
-    type: ResourceType
+    type: ResourceType,
     description: string,
+    reference: string
 }
 
 export type ResourceType = "experience" | "project" | "bug" | "docs"

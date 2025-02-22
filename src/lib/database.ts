@@ -7,72 +7,78 @@ export const db = Gun().get("tmtupqylqymdpptpedqseqflndbqsliaiqisatpaqiaetttmtmg
 const tempdb = {
     users: [
         {
-            name: "pepe",
-            contactData: "me gritas",
+            name: "José Manuel Villar García",
+            //contactData: "jose.villarg",
+            contactData: "j",
             posts: [
                 {
-                    tag: { type: "language", name: "bloste" },
+                    tag: { type: "language", name: "JS" },
                     resources: [
-                        { type: "project", description: "blosteando el camino" },
-                        { type: "bug", description: "no salen las lukas" },
-                        { type: "docs", description: "crotolamos en la naturaleza" },
+                        { type: "project", description: "(Insert Project description)",
+                             reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es" },
+                        { type: "bug", description: "(Bug description + solution)",reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es" },
+                        { type: "docs", description: "(Documentation)", reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es" },
                     ]
                 },
                 {
-                    tag: { type: "language", name: "crotolamo" },
+                    tag: { type: "language", name: "TS" },
                     resources: [
-                        { type: "project", description: "blosteando el camino" },
-                        { type: "bug", description: "no salen las lukas" },
-                        { type: "docs", description: "crotolamos en la naturaleza" },
+                        { type: "project", description: "(Insert Project description)" },
+                        { type: "bug", description: "(Bug description + solution)" },
+                        { type: "bug", description: "(Bug description + solution)" },
+                        { type: "bug", description: "(Bug description + solution)" },
+                        { type: "docs", description: "(Documentation)" },
                     ]
                 },
             ]
         },
         {
-            name: "juan",
-            contactData: "me llamas",
+            name: "Sergio Regueiro Martínez",
+            //contactData: "sergio.regueiro.martinez",
+            contactData: "s",
             posts: [
                 {
-                    tag: { type: "language", name: "bloste" },
+                    tag: { type: "language", name: "C" },
                     resources: [
-                        { type: "project", description: "blosteando el camino dnsdjak dkjashdkjh dajasdjaiosj" },
-                        { type: "bug", description: "no salen las lukas" },
-                        { type: "docs", description: "crotolamos en la naturaleza" },
+                        { type: "project", description: "(Insert Project description)",
+                             reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es" },
+                        { type: "bug", description: "(Bug description + solution)",reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es" },
+                        { type: "docs", description: "(Documentation)", reference: "https://static.wikia.nocookie.net/memes-pedia/images/7/74/Clown_Pepe.jpg/revision/latest?cb=20221219220721&path-prefix=es" },
                     ]
                 },
                 {
-                    tag: { type: "language", name: "crotolamo" },
+                    tag: { type: "language", name: "string.h" },
                     resources: [
-                        { type: "project", description: "blosteando el camino" },
-                        { type: "bug", description: "no salen las lukas" },
-                        { type: "docs", description: "crotolamos en la naturaleza" },
+                        { type: "project", description: "(Insert Project description)" },
+                        { type: "bug", description: "(Bug description + solution)" },
+                        { type: "docs", description: "(Documentation)" },
                     ]
                 },
                 {
-                    tag: { type: "language", name: "crotolamo" },
+                    tag: { type: "language", name: "JS" },
                     resources: [
-                        { type: "project", description: "blosteando el camino" },
-                        { type: "bug", description: "no salen las lukas" },
-                        { type: "docs", description: "crotolamos en la naturaleza" },
+                        { type: "project", description: "(Insert Project description)" },
+                        { type: "bug", description: "(Bug description + solution)" },
+                        { type: "docs", description: "(Documentation)" },
                     ]
                 },
                 {
-                    tag: { type: "language", name: "crotolamo" },
+                    tag: { type: "language", name: "TS" },
                     resources: [
-                        { type: "project", description: "blosteando el camino" },
-                        { type: "bug", description: "no salen las lukas" },
-                        { type: "docs", description: "crotolamos en la naturaleza" },
+                        { type: "project", description: "(Insert Project description)" },
+                        { type: "bug", description: "(Bug description + solution)" },
+                        { type: "docs", description: "(Documentation)" },
                     ]
                 },
             ]
         }
     ] as UserProfile[],
     tags: [
-        { type: "language", name: "bloste" },
-        { type: "language", name: "crotolamo" },
-        { type: "language", name: "padalustro" },
-        { type: "language", name: "luka" },
-        { type: "language", name: "contexto" }
+        { type: "language", name: "JS" },
+        { type: "language", name: "TS" },
+        { type: "language", name: "C" },
+        { type: "language", name: "C++" },
+        { type: "language", name: "string.h" }
     ] as Tag[]
 }
 

@@ -8,9 +8,10 @@
     <h2 class="tag">{post.tag.name}</h2>
     <div class="resources-container">
       {#each post.resources as des}
-        <p class="des">{@html des.description}</p>
+        <a class="des" href="{des.reference}" target="_blank">{des.description}</a>
       {/each}
     </div>
+    
   </div>
   
   <style>

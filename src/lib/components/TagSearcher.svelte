@@ -60,7 +60,8 @@
       class="search-input"
       bind:value={searchInput}
       placeholder="Buscar..."
-      onchange={handleSearch}
+      oninput={handleSearch}
+      onchange={onsubmit}
     />
   
     <button class="search-button" onclick={onsubmit}>
